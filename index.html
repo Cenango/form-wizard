@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #cac5c5;
+  }
+
+  #form {
+    background-color: #FFF;
+    margin: 100px auto;
+    font-family: Montserrat;
+    padding: 40px;
+    width: 50%;
+    min-width: 300px;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  h4 {
+    margin-bottom: 20px;
+  }
+
+  input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    font-family: Montserrat;
+    border: 1px solid #CCC;
+  }
+
+
+
+  /* Hide all steps by default: */
+  .tab {
+    display: none;
+    margin-top: 125px;
+  }
+
+  button {
+    background-color: #046340;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Montserrat;
+    cursor: pointer;
+  }
+
+  button:hover {
+    opacity: 0.6;
+  }
+
+  #prevBtn {
+    background-color: #e5c4c4;
+  }
+
+
+  .form-class .form-class-steps {
+    margin: 30px 0;
+  }
+
+  .form-class .form-class-steps li {
+    width: 25%;
+    float: left;
+    position: relative;
+  }
+
+  .form-class .form-class-steps li::after {
+    background-color: #f3f3f3;
+    content: "";
+    height: 5px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    border-bottom: 1px solid #dddddd;
+    border-top: 1px solid #dddddd;
+  }
+
+  .form-class .form-class-steps li span {
+    background-color: #dddddd;
+    border-radius: 50%;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    text-align: center;
+    width: 40px;
+    z-index: 1;
+  }
+
+  .form-class .form-class-steps li:last-child::after {
+    width: 0;
+  }
+
+  .form-class .form-class-steps li.active span,
+  .form-class .form-class-steps li.activated span {
+    background-color: #1abe8d;
+    color: #ffffff;
+  }
+
+  .form-class .form-class-steps li.activated::after {
+    background-color: #57d4af;
+    width: 100%;
+    border-color: #57d4af;
+  }
+
+  #paymentSuccess p {
+    text-align: center;
+  }
+</style>
+
+<body>
+
+
+  <form id="form" class="form-class" action="">
+    <h1>Register:</h1>
+
+    <div>
+      <ul id="stepIndicator" class="list-unstyled form-class-steps Clearfix">
+        <li class="active"><span>1</span></li>
+        <li><span>2</span></li>
+        <li><span>3</span></li>
+        <li><span>4</span></li>
+      </ul>
+    </div>
+
+
+    <div class="tab">
+      <h4>Personal info</h4>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputFirstname">First Name</label>
+          <input type="text" class="form-control" id="inputFirstname" placeholder="First Name">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputLastname">Last Name</label>
+          <input type="text" class="form-control" id="inputLastname" placeholder="Last Name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputAddress">Address</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCity">City</label>
+          <input type="text" class="form-control" id="inputCity">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputState">State</label>
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option value="AL">Alabama</option>
+            <option value="AK">Alaska</option>
+            <option value="AZ">Arizona</option>
+            <option value="AR">Arkansas</option>
+            <option value="CA">California</option>
+            <option value="CO">Colorado</option>
+            <option value="CT">Connecticut</option>
+            <option value="DE">Delaware</option>
+            <option value="DC">District Of Columbia</option>
+            <option value="FL">Florida</option>
+            <option value="GA">Georgia</option>
+            <option value="HI">Hawaii</option>
+            <option value="ID">Idaho</option>
+            <option value="IL">Illinois</option>
+            <option value="IN">Indiana</option>
+            <option value="IA">Iowa</option>
+            <option value="KS">Kansas</option>
+            <option value="KY">Kentucky</option>
+            <option value="LA">Louisiana</option>
+            <option value="ME">Maine</option>
+            <option value="MD">Maryland</option>
+            <option value="MA">Massachusetts</option>
+            <option value="MI">Michigan</option>
+            <option value="MN">Minnesota</option>
+            <option value="MS">Mississippi</option>
+            <option value="MO">Missouri</option>
+            <option value="MT">Montana</option>
+            <option value="NE">Nebraska</option>
+            <option value="NV">Nevada</option>
+            <option value="NH">New Hampshire</option>
+            <option value="NJ">New Jersey</option>
+            <option value="NM">New Mexico</option>
+            <option value="NY">New York</option>
+            <option value="NC">North Carolina</option>
+            <option value="ND">North Dakota</option>
+            <option value="OH">Ohio</option>
+            <option value="OK">Oklahoma</option>
+            <option value="OR">Oregon</option>
+            <option value="PA">Pennsylvania</option>
+            <option value="RI">Rhode Island</option>
+            <option value="SC">South Carolina</option>
+            <option value="SD">South Dakota</option>
+            <option value="TN">Tennessee</option>
+            <option value="TX">Texas</option>
+            <option value="UT">Utah</option>
+            <option value="VT">Vermont</option>
+            <option value="VA">Virginia</option>
+            <option value="WA">Washington</option>
+            <option value="WV">West Virginia</option>
+            <option value="WI">Wisconsin</option>
+            <option value="WY">Wyoming</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputZip">Zip</label>
+          <input type="text" class="form-control" id="inputZip">
+        </div>
+      </div>
+    </div>
+
+    <div class="tab">
+      <h4>Contact info</h4>
+      <div class="form-group row">
+        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputPhone" class="col-sm-2 col-form-label">Phone</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputPhone" placeholder="Phone">
+        </div>
+      </div>
+    </div>
+
+    <div class="tab">
+      <h4>Payment</h4>
+      <div class="form-group"> <label for="username">
+          <h6>Card Owner</h6>
+        </label> <input type="text" name="username" placeholder="Card Owner Name" required class="form-control "> </div>
+      <div class="form-group"> <label for="cardNumber">
+          <h6>Card number</h6>
+        </label>
+        <div class="input-group"> <input type="text" name="cardNumber" placeholder="Valid card number"
+            class="form-control " required>
+          <div class="input-group-append"> <span class="input-group-text text-muted"> <i
+                class="fab fa-cc-visa mx-1"></i> <i class="fab fa-cc-mastercard mx-1"></i> <i
+                class="fab fa-cc-amex mx-1"></i> </span> </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="form-group"> <label><span class="hidden-xs">
+                <h6>Expiration Date</h6>
+              </span></label>
+            <div class="input-group"> <input type="number" placeholder="MM" name="" class="form-control" required>
+              <input type="number" placeholder="YY" name="" class="form-control" required>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group mb-4"> <label data-toggle="tooltip"
+              title="Three digit CV code on the back of your card">
+              <h6>CVV <i class="fa fa-question-circle d-inline"></i></h6>
+            </label> <input type="text" required class="form-control"> </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tab">
+      <div class="row">
+
+        <div class="col-sm-8" style="margin: auto;" id="paymentSuccess">
+          <div style="text-align: right;">
+            <i class="fa fa-print" aria-hidden="true"></i>&nbsp;
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+          </div>
+
+          <h1>Payment Success !</h1>
+          <p><strong>Total: </strong> 150 USD</p>
+          <p><strong>Date: </strong> 01/09/2022</p>
+          <p><strong>Transaction ID: </strong> 1121</p>
+
+          <a href="#" onclick="gotoHome(event)">Go to Home</a>
+        </div>
+
+
+      </div>
+    </div>
+
+
+    <div style="overflow:auto;">
+      <div style="float:right;">
+        <button type="button" id="previousButton" class="btn btn-secondary" onclick="nextOrPrev(-1)"> &larr;
+          Previous</button>
+        <button type="button" id="nextButton" class="btn btn-primary" onclick="nextOrPrev(1)">Next &rarr;</button>
+      </div>
+    </div>
+
+
+  </form>
+
+  <script>
+
+    var current = 0;
+
+    show(current);
+
+    function show(n) {
+      let tabs = document.getElementsByClassName("tab");
+      tabs[n].style.display = "block";
+      nextPrevButtonDisplay();
+      stepIndicator();
+    }
+
+    function nextOrPrev(n) {
+      let tabs = document.getElementsByClassName("tab");
+      tabs[current].style.display = "none";
+      current = current + n;
+      show(current);
+    }
+
+    function gotoHome(e) {
+      e.preventDefault();
+      let tabs = document.getElementsByClassName("tab");
+      tabs[tabs.length - 1].style.display = "none";
+      current = 0;
+      show(current);
+    }
+
+    function nextPrevButtonDisplay() {
+      let tabs = document.getElementsByClassName("tab");
+
+      if (current == 0) {
+        document.getElementById("previousButton").style.display = "none";
+      } else {
+        document.getElementById("previousButton").style.display = "inline";
+      }
+
+      if (current == (tabs.length - 1)) {
+        document.getElementById("nextButton").style.display = "none";
+        document.getElementById("previousButton").style.display = "none";
+      } else {
+        document.getElementById("nextButton").innerHTML = "Next &rarr;"
+      }
+    }
+
+    function stepIndicator() {
+      let indicator = document.getElementById("stepIndicator").getElementsByTagName('li');
+      console.log(indicator.length);
+      for (i = 0; i < indicator.length; i++) {
+
+        indicator[i].className = " ";
+
+        if (i < current) {
+          indicator[i].className = "active activated";
+        }
+
+        if (i == current) {
+          indicator[i].className = "active";
+        }
+
+      }
+    }
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
